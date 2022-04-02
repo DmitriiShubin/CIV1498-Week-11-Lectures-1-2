@@ -1,0 +1,53 @@
+stages:
+  transform:
+    cmd: python3 src/transform.py
+#    params:
+#    - transform.min_dsp_request_count
+#    - transform.min_dsp_response_count
+#    - transform.train_data_percent
+#    - transform.min_dsp_positive_class_count
+    deps:
+    - data/raw
+    - src/transform.py
+    outs:
+    - data/processed/test.csv
+    - data/processed/0_train.csv
+    - data/processed/0_val.csv
+    - data/processed/1_train.csv
+    - data/processed/1_val.csv
+    - data/processed/2_train.csv
+    - data/processed/2_val.csv
+    - data/processed/3_train.csv
+    - data/processed/3_val.csv
+    - data/processed/4_train.csv
+    - data/processed/4_val.csv
+    - data/output_models/features.csv
+  train:
+    cmd: python3 src/train.py
+#    params:
+#    - global.pdc_id
+#    - global.model_version
+#    - global.model_name
+#    - train.categorical_features
+#    - train.catboost_hyperparams
+    deps:
+    - data/processed/test.csv
+    - data/processed/0_train.csv
+    - data/processed/0_val.csv
+    - data/processed/1_train.csv
+    - data/processed/1_val.csv
+    - data/processed/2_train.csv
+    - data/processed/2_val.csv
+    - data/processed/3_train.csv
+    - data/processed/3_val.csv
+    - data/processed/4_train.csv
+    - data/processed/4_val.csv
+    - src/train.py
+    - src/config.yaml
+    outs:
+    - data/output_models/0_lgb_model.pkl
+    - data/output_models/1_lgb_model.pkl
+    - data/output_models/2_lgb_model.pkl
+    - data/output_models/3_lgb_model.pkl
+    - data/output_models/4_lgb_model.pkl
+

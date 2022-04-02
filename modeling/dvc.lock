@@ -1,0 +1,107 @@
+schema: '2.0'
+stages:
+  transform:
+    cmd: python3 src/transform.py
+    deps:
+    - path: data/raw
+      md5: f2c7448614b9ec3d9e7e25dac874171f.dir
+      size: 150828752
+      nfiles: 1
+    - path: src/transform.py
+      md5: 88133f4613a4d75d5195e02a35abacb0
+      size: 2386
+    outs:
+    - path: data/output_models/features.csv
+      md5: 72187b5c5f770ed4201722178d3fb4d5
+      size: 51
+    - path: data/processed/0_train.csv
+      md5: 8b7784fe041d6723b566de62228a76ff
+      size: 110243822
+    - path: data/processed/0_val.csv
+      md5: bf775c494232b2a146d24c26c15c2ca8
+      size: 47043595
+    - path: data/processed/1_train.csv
+      md5: 6090684b905462775348ce691678e4be
+      size: 110593510
+    - path: data/processed/1_val.csv
+      md5: aabba6798e10a679adf0ef6aef290ad9
+      size: 47104357
+    - path: data/processed/2_train.csv
+      md5: cbfaa693cf1cc5a5fd0609cb96b8c6c0
+      size: 110696069
+    - path: data/processed/2_val.csv
+      md5: 6d31d896386fae7160c6c6898cfdeb5b
+      size: 46764524
+    - path: data/processed/3_train.csv
+      md5: 9a98f976895c9d8ad36ef54e0391f76c
+      size: 110142462
+    - path: data/processed/3_val.csv
+      md5: ac9cd037b3fd01038b6c4d03b108808a
+      size: 46943850
+    - path: data/processed/4_train.csv
+      md5: 3b1fdf2ce190cc7b60d31d6e80d3ce49
+      size: 110310894
+    - path: data/processed/4_val.csv
+      md5: b12d5ceccd36088da684fa595af3c7ab
+      size: 46988272
+    - path: data/processed/test.csv
+      md5: f3d12b1048595d3f052563da4ec53c1a
+      size: 70075761
+  train:
+    cmd: python3 src/train.py
+    deps:
+    - path: data/processed/0_train.csv
+      md5: 8b7784fe041d6723b566de62228a76ff
+      size: 110243822
+    - path: data/processed/0_val.csv
+      md5: bf775c494232b2a146d24c26c15c2ca8
+      size: 47043595
+    - path: data/processed/1_train.csv
+      md5: 6090684b905462775348ce691678e4be
+      size: 110593510
+    - path: data/processed/1_val.csv
+      md5: aabba6798e10a679adf0ef6aef290ad9
+      size: 47104357
+    - path: data/processed/2_train.csv
+      md5: cbfaa693cf1cc5a5fd0609cb96b8c6c0
+      size: 110696069
+    - path: data/processed/2_val.csv
+      md5: 6d31d896386fae7160c6c6898cfdeb5b
+      size: 46764524
+    - path: data/processed/3_train.csv
+      md5: 9a98f976895c9d8ad36ef54e0391f76c
+      size: 110142462
+    - path: data/processed/3_val.csv
+      md5: ac9cd037b3fd01038b6c4d03b108808a
+      size: 46943850
+    - path: data/processed/4_train.csv
+      md5: 3b1fdf2ce190cc7b60d31d6e80d3ce49
+      size: 110310894
+    - path: data/processed/4_val.csv
+      md5: b12d5ceccd36088da684fa595af3c7ab
+      size: 46988272
+    - path: data/processed/test.csv
+      md5: f3d12b1048595d3f052563da4ec53c1a
+      size: 70075761
+    - path: src/config.yaml
+      md5: ecae934cb120e71b4b40f3dbbd139c8e
+      size: 989
+    - path: src/train.py
+      md5: 086a8056c18486b8834101aca6cabbe9
+      size: 1626
+    outs:
+    - path: data/output_models/0_lgb_model.pkl
+      md5: 5fe29008cbd53d291a2dca4403265ba1
+      size: 40594
+    - path: data/output_models/1_lgb_model.pkl
+      md5: d889840c6127ff844519e2a62014ca4b
+      size: 21077
+    - path: data/output_models/2_lgb_model.pkl
+      md5: d395d8b4a82341aee16595639830cc9e
+      size: 57101
+    - path: data/output_models/3_lgb_model.pkl
+      md5: b9ba1da14659e7980b09cc71795acd26
+      size: 213406
+    - path: data/output_models/4_lgb_model.pkl
+      md5: f51abae319eae51527f4f78f77db0675
+      size: 59874

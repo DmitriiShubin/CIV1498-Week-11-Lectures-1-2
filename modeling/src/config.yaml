@@ -1,0 +1,44 @@
+data_generator_params:
+  train_name: 'train.csv'
+  val_name: 'val.csv'
+  test_name: 'test.csv'
+  data_path: './data/processed/'
+  target: "Class"
+  feature_list: ['Time']
+
+output_artefacts:
+  result_path: './data/output_models/'
+  run_hyperopt: True
+  feature_csv: './data/output_models/features.csv'
+  model_name: 'lgb_original_features.pkl'
+
+optmizer_hparams:
+  #basic optimization patameters
+  objective: 'binary'
+  metric: 'auc'
+  boosting: 'gbdt'
+  opt_mode: 'max'
+
+  lr: 1e-3
+  num_round: 1000
+  early_stopping: 100
+  verbosity: -1
+  stratified: True #if true, the stratieid K-Fold will be used
+
+  target: "Class"
+
+  #hyperparameters search, # of optimization rounds:
+  init_round: 1
+  opt_round: 0
+
+  #hyperparameters search:
+  num_leaves: (2, 200)
+  min_data_in_leaf: (1, 100)
+  max_depth: (1, 18)
+  feature_fraction: (0.1, 1)
+  bagging_fraction: (0.1, 1)
+  bagging_freq: (1, 100)
+  lambda_l1: (0, 10)
+  lambda_l2: (0, 10)
+  min_split_gain: (0.001, 0.1)
+  min_child_weight: (1, 50)

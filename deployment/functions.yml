@@ -1,0 +1,8 @@
+functions:
+  fraud_detection:
+    image: 919713240746.dkr.ecr.ca-central-1.amazonaws.com/fraud_detection:latest
+    events:
+      - http:
+          path: api/v1/fraud_detection_api/
+          method: post
+          cors: true
